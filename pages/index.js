@@ -11,6 +11,7 @@ export default function Home() {
 
     let login = () => {
         netlifyAuth.authenticate((user) => {
+            console.log("USER", user)
             setLoggedIn(!!user)
             setUser(user)
             netlifyAuth.closeModal()
@@ -26,11 +27,15 @@ export default function Home() {
 
     useEffect(() => {
         netlifyAuth.initialize((user) => {
+            console.log("USER effect", user)
             setLoggedIn(!!user)
         })
     }, [loggedIn])
 
+    console.log("user", user)
+
     return (
+
         <div className="container">
             <Head>
                 <title>Next.js Starter!</title>
